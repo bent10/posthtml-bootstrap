@@ -1,0 +1,23 @@
+<script props>
+  const { title, subtitle, imgurl, closable } = props
+
+  module.exports = {
+    title,
+    subtitle,
+    imgurl,
+    closable: isEnabled(closable),
+    closeLabel: props["close-label"] || "Close toast"
+  }
+</script>
+
+<div class="toast-header">
+  <if condition="imgurl">
+    <img src="{{imgurl}}" class="me-2 rounded" alt="" />
+  </if>
+  <if condition="title"><strong class="me-auto">{{title}}</strong></if>
+  <else><children /></else>
+  <if condition="subtitle"><small>{{subtitle}}</small></if>
+  <if condition="closable">
+    <ui:close dismiss="toast" aria-label="{{closeLabel}}" />
+  </if>
+</div>

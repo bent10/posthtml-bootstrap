@@ -1,0 +1,18 @@
+<script props>
+  const { as: component = "nav", size, align, label = "Pagination" } = props
+
+  module.exports = {
+    classes: clsx(
+      "pagination",
+      isString(size) && `pagination-${size}`,
+      isString(align) && `justify-content-${align}`
+    ),
+    label
+  }
+</script>
+
+<nav aria-label="{{label}}">
+  <ul class="{{classes}}" attributes>
+    <children />
+  </ul>
+</nav>

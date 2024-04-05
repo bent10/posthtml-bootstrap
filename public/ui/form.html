@@ -1,0 +1,13 @@
+<script props>
+  module.exports = {
+    isEnabled,
+    validated: props.validated
+  }
+</script>
+
+<if condition="isEnabled(validated)">
+  <form class="was-validated"><children /></form>
+</if>
+<else>
+  <form><children /></form>
+</else>

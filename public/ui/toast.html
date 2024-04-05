@@ -1,0 +1,27 @@
+<script props>
+  const { delay, variant, show } = props
+
+  module.exports = {
+    delay,
+    autohide: isEnabled(props["no-hide"]) ? false : null,
+    animation: isEnabled(props["no-transition"]) ? false : null,
+    classes: clsx(
+      "toast",
+      isString(variant) && `text-bg-${variant}`,
+      !isEnabled(props["no-transition"]) && "fade",
+      isEnabled(show) && "show"
+    )
+  }
+</script>
+
+<div
+  class="{{classes}}"
+  role="alert"
+  aria-live="assertive"
+  aria-atomic="true"
+  data-bs-animation="{{animation}}"
+  data-bs-autohide="{{autohide}}"
+  data-bs-delay="{{delay}}"
+>
+  <children />
+</div>

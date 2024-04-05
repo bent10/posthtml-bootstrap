@@ -1,0 +1,10 @@
+<script props>
+  const { as: component = "div", type = "valid", tooltip } = props
+
+  module.exports = {
+    component,
+    classes: clsx(`${type}-${isEnabled(tooltip) ? "tooltip" : "feedback"}`)
+  }
+</script>
+
+<{{component}} class="{{classes}}"><children /></div>

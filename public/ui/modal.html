@@ -1,0 +1,29 @@
+<script props>
+  const { backdrop, size, centered, scrollable, fullscreen } = props
+
+  module.exports = {
+    classes: clsx("modal", !isEnabled(props["no-transition"]) && "fade"),
+    dialogClasses: clsx(
+      "modal-dialog",
+      isString(size) && `modal-${size}`,
+      isBooleanLike(fullscreen) &&
+        (isTruthy(fullscreen)
+          ? "modal-fullscreen"
+          : `modal-fullscreen-${fullscreen}-down`),
+      isString(centered) && "modal-centered",
+      isString(scrollable) && "modal-scrollable"
+    ),
+    backdrop,
+    keyboard: isEnabled(props["no-keyboard"]) ? false : null
+  }
+</script>
+
+<div
+  class="{{classes}}"
+  data-bs-backdrop="{{backdrop}}"
+  data-bs-keyboard="{{keyboard}}"
+>
+  <div class="{{dialogClasses}}" role="document">
+    <div class="modal-content"><children /></div>
+  </div>
+</div>

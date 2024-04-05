@@ -1,0 +1,14 @@
+<script props>
+  const { as: component = "div", dimension = "height", show } = props
+
+  module.exports = {
+    component,
+    classes: clsx(
+      "collapse",
+      dimension === "width" && "collapse-horizontal",
+      isEnabled(show) && "show"
+    )
+  }
+</script>
+
+<{{component}} class="{{classes}}"><children /></div>

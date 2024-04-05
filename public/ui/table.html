@@ -1,0 +1,34 @@
+<script props>
+  const {
+    caption,
+    striped,
+    bordered,
+    borderless,
+    hover,
+    condensed,
+    dark,
+    responsive
+  } = props
+
+  module.exports = {
+    caption,
+    classes: clsx("table", {
+      "table-striped": isEnabled(striped),
+      "table-striped-columns": striped === "columns",
+      "table-bordered": isEnabled(bordered),
+      "table-borderless": isEnabled(borderless),
+      "table-hover": isEnabled(hover),
+      "table-condensed": isEnabled(condensed),
+      "table-dark": isEnabled(dark),
+      "table-responsive": isEnabled(responsive),
+      [`table-responsive-${responsive}`]: responsive && isString(responsive)
+    })
+  }
+</script>
+
+<table class="{{classes}}">
+  <if condition="caption">
+    <caption>{{caption}}</caption>
+  </if>
+  <children />
+</table>

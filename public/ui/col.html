@@ -1,0 +1,14 @@
+<script props>
+  const { as: component = "div", size, offset, order } = props
+
+  module.exports = {
+    component,
+    classes: clsx(
+      isNil(size) ? "col" : normalizeBreakpointProp("col", size),
+      !isNil(offset) && normalizeBreakpointProp("offset", offset),
+      !isNil(order) && normalizeBreakpointProp("order", order)
+    )
+  }
+</script>
+
+<{{component}} class="{{classes}}"><children /></div>

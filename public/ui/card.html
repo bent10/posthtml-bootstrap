@@ -1,0 +1,14 @@
+<script props>
+  const { as: component = "div", bg, border } = props
+
+  module.exports = {
+    component,
+    classes: clsx(
+      "card",
+      isString(bg) && `text-bg-${bg}`,
+      isString(border) && `border-${border}`
+    )
+  }
+</script>
+
+<{{component}} class="{{classes}}"><children /></div>

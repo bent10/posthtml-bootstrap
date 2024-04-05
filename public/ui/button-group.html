@@ -1,0 +1,14 @@
+<script props>
+  const { as: component = "div", size, vertical, fill } = props
+
+  module.exports = {
+    component,
+    classes: clsx(
+      isEnabled(vertical) ? "btn-group-vertical" : "btn-group",
+      isString(size) && `btn-group-${size}`,
+      isEnabled(fill) && "d-flex"
+    )
+  }
+</script>
+
+<{{component}} class="{{classes}}"><children /></div>

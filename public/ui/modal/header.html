@@ -1,0 +1,20 @@
+<script props>
+  const { title, closable } = props
+
+  module.exports = {
+    title,
+    closable: isEnabled(props.closable),
+    closeLabel: props["close-label"] || "Close modal"
+  }
+</script>
+
+<div class="modal-header">
+  <if condition="title"><h5 class="modal-title">{{title}}</h5></if>
+  <else>
+    <h5 class="modal-title"><children /></h5>
+  </else>
+
+  <if condition="closable">
+    <ui:close dismiss="modal" aria-label="{{closeLabel}}" />
+  </if>
+</div>

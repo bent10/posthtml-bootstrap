@@ -1,0 +1,22 @@
+<script props>
+  const { href, label, disabled } = props
+
+  module.exports = {
+    classes: clsx("card-link", isEnabled(disabled) && "disabled"),
+    isLabel: isString(label),
+    label,
+    href,
+    disabled,
+    isDisabled: isEnabled(disabled)
+  }
+</script>
+
+<a
+  href="{{href}}"
+  class="{{classes}}"
+  tabindex="{{isDisabled ? '-1' : null}}"
+  aria-disabled="{{isDisabled ? true : null}}"
+>
+  <if condition="isLabel">{{label}}</if>
+  <else><children /></else>
+</a>

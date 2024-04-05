@@ -1,0 +1,15 @@
+<script props>
+  const { src, rounded, circle, thumbnail } = props
+
+  module.exports = {
+    src,
+    classes: clsx(
+      "img-fluid",
+      isEnabled(thumbnail) && "img-thumbnail",
+      isEnabled(rounded) && "rounded",
+      isEnabled(circle) && "rounded-circle"
+    )
+  }
+</script>
+
+<img src="{{src}}" class="{{classes}}" alt="" />

@@ -1,0 +1,51 @@
+<script props>
+  const {
+    now = 0,
+    min = 0,
+    max = 100,
+    label,
+    striped = false,
+    animated = false,
+    variant = "primary",
+    height
+  } = props
+  // the progress value as a percentage
+  const calcValue = (+now / +max) * 100
+  const value =
+    calcValue < +min ? "0%" : calcValue > max ? "100%" : `${calcValue}%`
+
+  let style = `width: ${value};`
+  style += height ? ` height: ${height};` : ""
+
+  module.exports = {
+    now: calcValue < +min ? min : calcValue > max ? max : calcValue,
+    min,
+    max,
+    value,
+    classes: clsx(
+      "progress-bar",
+      variant && `text-bg-${variant}`,
+      isEnabled(striped) && "progress-bar-striped",
+      isEnabled(animated) && "progress-bar-animated"
+    ),
+    style,
+    hasLabel: label || isEnabled(label),
+    formatedLabel:
+      label && isString(label)
+        ? label.replace(/(?:\[\s?value\s?\])/, value)
+        : value
+  }
+</script>
+
+<div
+  class="progress"
+  role="progressbar"
+  aria-valuenow="{{now}}"
+  aria-valuemin="{{min}}"
+  aria-valuemax="{{max}}"
+>
+  <div class="{{classes}}" style="{{style}}">
+    <if condition="hasLabel">{{formatedLabel}}</if>
+    <else><span class="visually-hidden">{{value}}</span></else>
+  </div>
+</div>

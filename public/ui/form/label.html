@@ -1,0 +1,12 @@
+<script props>
+  const { as: component = "label", visuallyHidden } = props
+
+  module.exports = {
+    component,
+    classes: clsx("form-label", {
+      "visually-hidden": isEnabled(visuallyHidden)
+    })
+  }
+</script>
+
+<{{component}} class="{{classes}}"><children /></label>

@@ -1,0 +1,33 @@
+<script props>
+  const { as: component = "ul", items = [], align } = props
+
+  module.exports = {
+    component,
+    classes: clsx(
+      "dropdown-menu",
+      isString(align) && normalizeBreakpointProp("dropdown-menu", align)
+    ),
+    items: Array.isArray(items) ? items : JSON.parse(jsonLoose(items))
+  }
+</script>
+
+<{{component}} class="{{classes}}">
+  <if condition="items.length">
+    <each loop="item in items">
+      <if condition="item.header">
+        <ui:dropdown.header>{{item.header}}</ui:dropdown.header>
+      </if>
+      <elseif condition="item.divider"><ui:dropdown.divider /></elseif>
+      <else>
+        <ui:dropdown.item
+          href="{{item.href}}"
+          active="{{item.active}}"
+          disabled="{{item.disabled}}"
+        >
+          {{item.text}}
+        </ui:dropdown.item>
+      </else>
+    </each>
+  </if>
+  <else><children /></else>
+</ul>

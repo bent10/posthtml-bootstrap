@@ -1,0 +1,15 @@
+<script props>
+  const { as: component = "div", ratio = "16x9", rounded, circle } = props
+
+  module.exports = {
+    component,
+    classes: clsx(
+      "ratio",
+      `ratio-${ratio}`,
+      isEnabled(rounded) && "rounded",
+      isEnabled(circle) && "rounded-circle"
+    )
+  }
+</script>
+
+<{{component}} class="{{classes}}"><children /></div>

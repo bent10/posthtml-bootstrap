@@ -1,0 +1,60 @@
+<script props>
+  const {
+    as,
+    href,
+    variant,
+    action,
+    disabled,
+    active,
+  } = props
+
+  module.exports = {
+    component: isNil(as) ? 'div' : as,
+    href,
+    hasHref: !isNil(href),
+    classes: clsx(
+      "list-group-item",
+      isString(variant) && `list-group-item-${variant}`,
+      isEnabled(action) && "list-group-item-action",
+      isEnabled(active) && "active"
+    ),
+    tabindex: isEnabled(disabled) ? "-1" : null,
+    isDisabled: isEnabled(disabled) ? true : null,
+    isActive: isEnabled(active) ? true : null,
+    clsx
+  }
+</script>
+
+<if condition="component === 'button'">
+  <button
+    type="button"
+    class="{{classes}}"
+    disabled="{{isDisabled ? '' : null}}"
+    aria-current="{{isActive}}"
+  >
+    <children />
+  </button>
+</if>
+<else>
+  <if condition="hasHref">
+    <a
+      href="{{href}}"
+      class="{{clsx(classes, isDisabled && 'disabled')}}"
+      tabindex="{{tabindex}}"
+      aria-disabled="{{isDisabled}}"
+      aria-current="{{isActive}}"
+    >
+      <children />
+    </a>
+  </if>
+  <else>
+    <{{component}}
+      class="{{clsx(classes, isDisabled && 'disabled')}}"
+      tabindex="{{tabindex}}"
+      aria-disabled="{{isDisabled}}"
+      aria-current="{{isActive}}"
+    >
+      <children />
+    </div>
+  </else>
+</else>

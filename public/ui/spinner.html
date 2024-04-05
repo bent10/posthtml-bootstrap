@@ -1,0 +1,16 @@
+<script props>
+  const { size, variant, grow } = props
+  const type = isEnabled(grow) ? "spinner-grow" : "spinner-border"
+
+  module.exports = {
+    classes: clsx(
+      type,
+      isString(size) && `${type}-${size}`,
+      isString(variant) && `text-${variant}`
+    )
+  }
+</script>
+
+<div class="{{classes}}" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>

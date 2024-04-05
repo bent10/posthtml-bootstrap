@@ -1,0 +1,60 @@
+<script props>
+  const {
+    as: component = "div",
+    direction,
+    justify,
+    align,
+    fill,
+    grow,
+    shrink,
+    wrap,
+    nowrap,
+    order,
+    gap
+  } = props
+  const alignSelf = props["align-self"]
+  const alignContent = props["align-content"]
+  const rowGap = props["row-gap"]
+
+  const isGrow = !isNil(grow)
+  const isShrink = !isNil(shrink)
+  const [growPoint, growNum] = isGrow ? (String(grow) || "1").split("-") : []
+  const [shrinkPoint, shrinkNum] = isShrink
+    ? (String(shrink) || "1").split("-")
+    : []
+  const wrapReverse = props["wrap-reverse"]
+
+  module.exports = {
+    component,
+    classes: clsx(
+      "d-flex",
+      !isNil(fill) && (isEnabled(fill) ? "flex-fill" : `flex-${fill}-fill`),
+      isGrow &&
+        (isNil(growNum)
+          ? `flex-grow-${growPoint}`
+          : `flex-${growPoint}-grow-${growNum}`),
+      isShrink &&
+        (isNil(shrinkNum)
+          ? `flex-shrink-${shrinkPoint}`
+          : `flex-${shrinkPoint}-shrink-${shrinkNum}`),
+      !isNil(wrap) && (isEnabled(wrap) ? "flex-wrap" : `flex-${wrap}-wrap`),
+      !isNil(wrapReverse) &&
+        (isEnabled(wrapReverse)
+          ? "flex-wrap-reverse"
+          : `flex-${wrapReverse}-wrap-reverse`),
+      !isNil(nowrap) &&
+        (isEnabled(nowrap) ? "flex-nowrap" : `flex-${nowrap}-nowrap`),
+      !isNil(direction) && normalizeBreakpointProp("flex", direction),
+      !isNil(justify) && normalizeBreakpointProp("justify-content", justify),
+      !isNil(align) && normalizeBreakpointProp("align-items", align),
+      !isNil(alignSelf) && normalizeBreakpointProp("align-self", alignSelf),
+      !isNil(alignContent) &&
+        normalizeBreakpointProp("align-content", alignContent),
+      !isNil(order) && normalizeBreakpointProp("order", order),
+      !isNil(gap) && normalizeBreakpointProp("gap", gap),
+      !isNil(rowGap) && normalizeBreakpointProp("row-gap", rowGap),
+    )
+  }
+</script>
+
+<{{component}} class="{{classes}}"><children /></div>

@@ -1,0 +1,33 @@
+<script props>
+  const { as: component = "div", direction, expand } = props
+
+  let prefix
+
+  switch (direction) {
+    case "up":
+    case "up-centered":
+      prefix = "dropup"
+      break
+    case "end":
+      prefix = "dropend"
+      break
+    case "start":
+      prefix = "dropstart"
+      break
+    default:
+      prefix = "dropdown"
+      break
+  }
+
+  module.exports = {
+    component,
+    classes: clsx(prefix, {
+      "dropup-centered": direction === "up-centered",
+      "dropdown-centered": direction === "down-centered",
+      [`${prefix}-expand`]: isEnabled(expand),
+      [`${prefix}-expand-${expand}`]: expand && isString(expand)
+    })
+  }
+</script>
+
+<{{component}} class="{{classes}}"><children /></div>

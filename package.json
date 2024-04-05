@@ -1,0 +1,69 @@
+{
+  "name": "posthtml-bootstrap",
+  "description": "A PostHTML plugin that allows you to use Bootstrap components directly in your HTML code",
+  "version": "0.0.0-development",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Beni Arisandi (https://stilearning.com)",
+  "repository": "https://github.com/bent10/posthtml-bootstrap",
+  "bugs": "https://github.com/bent10/posthtml-bootstrap/issues",
+  "license": "MIT",
+  "keywords": [
+    "bootstrap",
+    "posthtml",
+    "component",
+    "template",
+    "ui",
+    "x-tag"
+  ],
+  "type": "module",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "readme.md",
+    "license"
+  ],
+  "scripts": {
+    "start": "vite",
+    "dev": "vite build --watch",
+    "build": "vite build && npm run types",
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
+    "types": "tsc -d --emitDeclarationOnly --outDir ./dist",
+    "lint": "tsc --noEmit && eslint .",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "clsx": "2.1.0",
+    "json-loose": "1.2.3"
+  },
+  "devDependencies": {
+    "@types/lodash-es": "^4.17.12",
+    "doogu": "3.2.12",
+    "lodash-es": "^4.17.21"
+  },
+  "peerDependencies": {
+    "posthtml": ">=0.16.6",
+    "posthtml-component": ">=1.1.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/doogu/eslint"
+  },
+  "prettier": "doogu/prettier.json",
+  "release": {
+    "extends": "doogu/release.config.js"
+  }
+}

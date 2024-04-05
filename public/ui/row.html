@@ -1,0 +1,13 @@
+<script props>
+  const { as: component = 'div', cols } = props
+
+  module.exports = {
+    component,
+    classes: clsx(
+      "row",
+      !isNil(cols) && normalizeBreakpointProp("row-cols", cols)
+    )
+  }
+</script>
+
+<{{component}} class="{{classes}}"><children /></div>

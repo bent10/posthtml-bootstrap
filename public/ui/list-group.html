@@ -1,0 +1,40 @@
+<script props>
+  const {
+    as,
+    items = [],
+    flush,
+    numbered,
+    horizontal
+  } = props
+  const component = isEnabled(numbered) ? "ol" : "div"
+
+  module.exports = {
+    component,
+    classes: clsx(
+      "list-group",
+      isEnabled(flush) && "list-group-flush",
+      isEnabled(numbered) && "list-group-numbered",
+      !isNil(horizontal) &&
+        normalizeBreakpointProp("list-group-horizontal", horizontal)
+    ),
+    items: Array.isArray(items) ? items : JSON.parse(jsonLoose(items)),
+    isString
+  }
+</script>
+
+<{{component}} class="{{classes}}">
+  <if condition="items.length">
+    <each loop="item in items">
+      <ui:list-group.item
+        as="{{isString(item.as) ? item.as : null}}"
+        href="{{isString(item.href) ? item.href : null}}"
+        action="{{item.action}}"
+        disabled="{{item.disabled}}"
+        active="{{item.active}}"
+      >
+        {{item.text}}
+      </ui:list-group.item>
+    </each>
+  </if>
+  <else><children /></else>
+</div>

@@ -1,0 +1,15 @@
+<script props>
+  const { as: component = "div", fluid } = props
+
+  module.exports = {
+    component,
+    classes:
+      !isNil(fluid)
+        ? isEnabled(fluid)
+          ? "container-fluid"
+          : `container-${fluid}`
+        : "container"
+  }
+</script>
+
+<{{component}} class="{{classes}}"><children /></div>

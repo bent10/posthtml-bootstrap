@@ -1,0 +1,22 @@
+<script props>
+  const { as: component = "div", variant = "warning", dismissible } = props
+
+  module.exports = {
+    component,
+    classes: clsx(
+      "alert",
+      `alert-${variant}`,
+      isEnabled(dismissible) && "alert-dismissible",
+      !isEnabled(props["no-transition"]) && "fade show"
+    ),
+    isDismissible: isEnabled(dismissible),
+    closeLabel: props["close-label"] || "Hide alert"
+  }
+</script>
+
+<{{component}} class="{{classes}}">
+  <if condition="isDismissible">
+    <ui:close dismiss="alert" aria-label="{{closeLabel}}" />
+  </if>
+  <children />
+</div>

@@ -1,0 +1,16 @@
+<script props>
+  const { lg, sm, valid, invalid } = props
+
+  module.exports = {
+    classes: clsx("form-select", {
+      "form-select-lg": isEnabled(lg),
+      "form-select-sm": isEnabled(sm),
+      "is-valid": isEnabled(valid),
+      "is-invalid": isEnabled(invalid)
+    })
+  }
+</script>
+
+<select class="{{classes}}">
+  <children />
+</select>

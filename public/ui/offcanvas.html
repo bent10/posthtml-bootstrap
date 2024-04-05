@@ -1,0 +1,26 @@
+<script props>
+  const {
+    as: component = "div",
+    backdrop,
+    scroll,
+    responsive,
+    placement
+  } = props
+
+  module.exports = {
+    component,
+    classes: clsx(
+      isString(responsive) ? `offcanvas-${responsive}` : "offcanvas",
+      isString(placement) && `offcanvas-${placement}`
+    ),
+    backdrop,
+    scroll: isEnabled(scroll) ? true : null,
+    keyboard: isEnabled(props["no-keyboard"]) ? false : null
+  }
+</script>
+
+<{{component}}
+  class="{{classes}}"
+  data-bs-backdrop="{{backdrop}}"
+  data-bs-keyboard="{{keyboard}}"
+><children /></div>

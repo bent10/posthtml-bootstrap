@@ -1,0 +1,14 @@
+<script props>
+  const { as: component = 'div', lg, sm, validation } = props
+
+  module.exports = {
+    component,
+    classes: clsx("input-group", {
+      "input-group-lg": isEnabled(lg),
+      "input-group-sm": isEnabled(sm),
+      "has-validation": isEnabled(validation)
+    })
+  }
+</script>
+
+<{{component}} class="{{classes}}"><children /></div>

@@ -1,0 +1,23 @@
+<script props>
+  const { absolute, fixed } = props
+
+  module.exports = {
+    classes: clsx(
+      "toast-container p-3",
+      isEnabled(absolute) && "position-absolute",
+      isEnabled(fixed) && "position-fixed",
+      isEnabled(props["top-left"]) && "top-0 start-0",
+      isEnabled(props["top-center"]) && "top-0 start-50 translate-middle-x",
+      isEnabled(props["top-right"]) && "top-0 end-0",
+      isEnabled(props["middle-left"]) && "top-50 start-0 translate-middle-y",
+      isEnabled(props["middle-center"]) && "top-50 start-50 translate-middle",
+      isEnabled(props["middle-right"]) && "top-50 end-0 translate-middle-y",
+      isEnabled(props["bottom-left"]) && "bottom-0 start-0",
+      isEnabled(props["bottom-center"]) &&
+        "bottom-0 start-50 translate-middle-x",
+      isEnabled(props["bottom-right"]) && "bottom-0 end-0"
+    )
+  }
+</script>
+
+<div class="{{classes}}"><children /></div>

@@ -1,0 +1,17 @@
+<script props>
+  const { as: component = "nav", expand, bg, fixed, sticky } = props
+
+  module.exports = {
+    component,
+    classes: clsx(
+      "navbar",
+      !isNil(expand) &&
+        (isEnabled(expand) ? "navbar-expand" : `navbar-expand-${expand}`),
+      isString(bg) && `bg-${bg}`,
+      !isNil(fixed) && (isEnabled(fixed) ? "fixed-top" : `fixed-${fixed}`),
+      !isNil(sticky) && (isEnabled(sticky) ? "sticky-top" : `sticky-${sticky}`)
+    )
+  }
+</script>
+
+<{{component}} class="{{classes}}"><children /></nav>

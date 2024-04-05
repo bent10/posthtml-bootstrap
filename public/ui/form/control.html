@@ -1,0 +1,18 @@
+<script props>
+  const { type = "text", lg, sm, plaintext, valid, invalid } = props
+
+  module.exports = {
+    type,
+    classes: clsx(
+      isEnabled(plaintext) ? "form-control-plaintext" : "form-control",
+      {
+        "form-control-lg": isEnabled(lg),
+        "form-control-sm": isEnabled(sm),
+        "is-valid": isEnabled(valid),
+        "is-invalid": isEnabled(invalid)
+      }
+    )
+  }
+</script>
+
+<input type="{{type}}" class="{{classes}}" />

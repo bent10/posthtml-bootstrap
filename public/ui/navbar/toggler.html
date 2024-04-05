@@ -1,0 +1,22 @@
+<script props>
+  const { offcanvas, target } = props
+  const controls = isString(target) ? target.slice(1) : null
+
+  module.exports = {
+    toggle: isEnabled(offcanvas) ? "offcanvas" : "collapse",
+    target: isString(target) ? target : null,
+    controls
+  }
+</script>
+
+<button
+  class="navbar-toggler"
+  type="button"
+  data-bs-toggle="{{toggle}}"
+  data-bs-target="{{target}}"
+  aria-controls="{{controls}}"
+  aria-expanded="false"
+  aria-label="Toggle navigation"
+>
+  <span class="navbar-toggler-icon"></span>
+</button>

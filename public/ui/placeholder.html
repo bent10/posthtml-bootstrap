@@ -1,0 +1,38 @@
+<script props>
+  const { type, variant, size, width } = props
+
+  // composes the class names for the `placeholder` component
+  const getWidthClasses = dim => {
+    if (!dim || +dim < 1) return ""
+    if (+dim > 12) return `w-${dim}`
+    return normalizeBreakpointProp("col", dim)
+  }
+
+  module.exports = {
+    variant,
+    size,
+    classes: clsx(
+      type ? `placeholder-${type}` : "placeholder",
+      size && `placeholder-${size}`,
+      variant && `bg-${variant}`,
+      getWidthClasses(width)
+    ),
+    btnClasses: clsx(
+      type ? `placeholder-${type}` : "placeholder",
+      getWidthClasses(width)
+    ),
+    isBtn: isEnabled(props["is-button"])
+  }
+</script>
+
+<if condition="isBtn">
+  <ui:button
+    class="{{btnClasses}}"
+    variant="{{variant || null}}"
+    size="{{size || null}}"
+    disabled
+  />
+</if>
+<else>
+  <span class="{{classes}}" />
+</else>

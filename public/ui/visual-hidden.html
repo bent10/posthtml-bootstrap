@@ -1,0 +1,14 @@
+<script props>
+  const { as: component = 'span', focusable } = props
+
+  module.exports = {
+    component,
+    classes: clsx(
+      "visually-hidden",
+      isEnabled(focusable) && "visually-hidden-focusable"
+    )
+  }
+
+</script>
+
+<{{component}} class="{{classes}}"><children /></span>

@@ -1,0 +1,29 @@
+<script props>
+  const { active, disabled, text } = props
+
+  module.exports = {
+    text,
+    classes: clsx(
+      "page-item",
+      isEnabled(active) && "active",
+      isEnabled(disabled) && "disabled"
+    ),
+    isDisabled: isEnabled(disabled) ? true : null,
+    isActive: isEnabled(active) ? true : null
+  }
+</script>
+
+<li class="{{classes}}" aria-current="{{isActive}}">
+  <if condition="isDisabled || isActive">
+    <span class="page-link" attributes>
+      <if condition="text">{{text}}</if>
+      <children />
+    </span>
+  </if>
+  <else>
+    <a href="{{href}}" class="page-link" attributes>
+      <if condition="text">{{text}}</if>
+      <children />
+    </a>
+  </else>
+</li>

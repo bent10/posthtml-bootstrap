@@ -1,0 +1,25 @@
+<script props>
+  const { as: component = "div", id, active, show } = props
+
+  module.exports = {
+    component,
+    id,
+    classes: clsx(
+      "tab-pane",
+      !isEnabled(props["no-transition"]) && "fade",
+      isEnabled(active) && "active",
+      isEnabled(show) && "show"
+    ),
+    labelledby: isString(id) ? `${id}-tab` : null
+  }
+</script>
+
+<{{component}}
+  id="{{id}}"
+  class="{{classes}}"
+  role="tabpanel"
+  tabindex="0"
+  aria-labelledby="{{labelledby}}"
+>
+  <children />
+</div>

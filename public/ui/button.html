@@ -1,0 +1,80 @@
+<script props>
+  const {
+    as: component = "button",
+    href,
+    variant,
+    size,
+    nowrap,
+    toggle,
+    target,
+    active,
+    disabled
+  } = props
+
+  module.exports = {
+    component,
+    href: isString(href) ? href : null,
+    classes: clsx("btn", {
+      [`btn-${variant}`]: isString(variant),
+      [`btn-${size}`]: isString(size),
+      "text-nowrap": isEnabled(nowrap),
+      active: isEnabled(active),
+      disabled:
+        isEnabled(disabled) &&
+        (!["input", "button"].includes(component) || href)
+    }),
+    toggle: toggle ? toggle : null,
+    target: target ? target : null,
+    isPressed: isEnabled(active) ? "true" : null,
+    isDisabled: isEnabled(disabled) ? "true" : null
+  }
+</script>
+
+<if condition="href">
+  <a
+    href="{{href}}"
+    target="{{target}}"
+    class="{{classes}}"
+    role="button"
+    tabindex="{{isDisabled ? '-1' : null}}"
+    data-bs-toggle="{{toggle}}"
+    aria-disabled="{{isDisabled}}"
+    aria-pressed="{{isPressed}}"
+  >
+    <children />
+  </a>
+</if>
+<else>
+  <if condition="component === 'button'">
+    <button
+      type="button"
+      class="{{classes}}"
+      data-bs-toggle="{{toggle}}"
+      data-bs-target="{{target}}"
+      aria-pressed="{{isPressed}}"
+    >
+      <children />
+    </button>
+  </if>
+  <elseif condition="component === 'input'">
+    <input
+      type="button"
+      class="{{classes}}"
+      data-bs-toggle="{{toggle}}"
+      data-bs-target="{{target}}"
+      aria-pressed="{{isPressed}}"
+    />
+  </elseif>
+  <else>
+    <{{component}}
+      class="{{classes}}"
+      role="button"
+      data-bs-toggle="{{toggle}}"
+      data-bs-target="{{target}}"
+      aria-pressed="{{isPressed}}"
+      aria-disabled="{{isDisabled}}"
+    >
+      <children />
+    </div>
+  </else>
+</else>

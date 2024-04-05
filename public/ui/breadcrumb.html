@@ -1,0 +1,47 @@
+<script props>
+  const { items = null, divider } = props
+  const hasItems = Array.isArray(items)
+
+  module.exports = {
+    divider: isString(divider) ? `--bs-breadcrumb-divider: '${divider}'` : null,
+    hasItems,
+    items: hasItems ? items : JSON.parse(jsonLoose(items || "[]"))
+  }
+</script>
+
+<if condition="items.length">
+  <nav style="{{divider}}" aria-label="Breadcrumb">
+    <ol class="breadcrumb" attributes>
+      <each loop="item in items">
+        <ui:breadcrumb.item
+          href="{{items.length === 1 ? './' : item.href}}"
+          active="{{loop.last && items.length > 1}}"
+        >
+          <if condition="loop.first">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              focusable="false"
+              aria-hidden="true"
+              class="bi bi-chevron-left"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"
+              ></path>
+            </svg>
+          </if>
+          {{item.text}}
+        </ui:breadcrumb.item>
+      </each>
+    </ol>
+  </nav>
+</if>
+
+<elseif condition="!hasItems">
+  <nav style="{{divider}}" aria-label="Breadcrumb">
+    <ol class="breadcrumb" attributes>
+      <children />
+    </ol>
+  </nav>
+</elseif>

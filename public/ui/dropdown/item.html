@@ -1,0 +1,29 @@
+<script props>
+  const { as: component = "a", href, type, active, disabled } = props
+
+  module.exports = {
+    component,
+    href,
+    type: component === 'button' ? type || 'button' : type,
+    classes: clsx(
+      "dropdown-item",
+      isEnabled(active) && "active",
+      isEnabled(disabled) && "disabled"
+    ),
+    tabindex: isEnabled(disabled) ? '-1' : null,
+    isDisabled: isEnabled(disabled) ? true : null,
+    isActive: isEnabled(active) ? true : null,
+  }
+</script>
+
+<li>
+  <{{component}}
+    href="{{href}}"
+    type="{{type}}"
+    class="{{classes}}"
+    tabindex="{{tabindex}}"
+    aria-disabled="{{isDisabled}}"
+    aria-current="{{isActive}}"
+    attributes
+  ><children /></a>
+</li>

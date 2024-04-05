@@ -1,0 +1,21 @@
+<script props>
+  const { as: component = "div", title, closable } = props
+
+  module.exports = {
+    component,
+    title,
+    closable: isEnabled(props.closable),
+    closeLabel: props["close-label"] || "Close offcanvas"
+  }
+</script>
+
+<{{component}} class="offcanvas-header">
+  <if condition="title"><h5 class="offcanvas-title">{{title}}</h5></if>
+  <else>
+    <h5 class="offcanvas-title"><children /></h5>
+  </else>
+
+  <if condition="closable">
+    <ui:close dismiss="offcanvas" aria-label="{{closeLabel}}" />
+  </if>
+</div>

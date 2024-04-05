@@ -1,0 +1,12 @@
+<script props>
+  const { as: component = "figure", caption } = props
+
+  module.exports = { component, caption }
+</script>
+
+<{{component}} class="figure">
+  <if condition="caption">
+    <figcaption>{{caption}}</figcaption>
+  </if>
+  <children />
+</figure>

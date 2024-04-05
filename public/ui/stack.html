@@ -1,0 +1,13 @@
+<script props>
+  const { as: component = "div", vertical, gap } = props
+
+  module.exports = {
+    component,
+    classes: clsx(
+      isEnabled(vertical) ? 'vstack' : 'hstack',
+      !isNil(gap) && `gap-${gap}`
+    )
+  }
+</script>
+
+<{{component}} class="{{classes}}"><children /></div>

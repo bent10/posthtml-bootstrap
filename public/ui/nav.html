@@ -1,0 +1,23 @@
+<script props>
+  const {
+    as: component = "ul",
+    navbar,
+    type,
+    fill,
+    justified,
+    vertical
+  } = props
+
+  module.exports = {
+    component,
+    classes: clsx(
+      isEnabled(navbar) ? "navbar-nav" : "nav",
+      isString(type) && `nav-${type}`,
+      isEnabled(fill) && "nav-fill",
+      isEnabled(justified) && "nav-justified",
+      isEnabled(vertical) && "flex-column flex-nowrap"
+    )
+  }
+</script>
+
+<{{component}} class="{{classes}}"><children /></ul>

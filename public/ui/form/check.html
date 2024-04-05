@@ -1,0 +1,41 @@
+<script props>
+  const {
+    type = "checkbox",
+    label,
+    id,
+    inline,
+    reverse,
+    valid,
+    invalid
+  } = props
+  const isSwitcher = type === "switch"
+
+  module.exports = {
+    id,
+    label,
+    type: isSwitcher ? "checkbox" : type,
+    classes: clsx("form-check", {
+      "form-switch": isSwitcher,
+      "form-check-inline": isEnabled(inline),
+      "form-check-reverse": isEnabled(reverse)
+    }),
+    inputClasses: clsx("form-check-input", {
+      "is-valid": isEnabled(valid),
+      "is-invalid": isEnabled(invalid)
+    }),
+    isSwitcher
+  }
+</script>
+
+<div class="{{classes}}">
+  <input
+    type="{{type}}"
+    id="{{id}}"
+    class="{{inputClasses}}"
+    role="{{isSwitcher ? 'switch' : null}}"
+    attributes
+  />
+  <if condition="label">
+    <label class="form-check-label" for="{{id}}">{{label}}</label>
+  </if>
+</div>

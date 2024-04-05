@@ -1,0 +1,16 @@
+<script props>
+  const { dismiss, sronly } = props
+
+  module.exports = {
+    dismiss,
+    classes: clsx("btn-close", isEnabled(sronly) && "visually-hidden"),
+    ariaLabel: isString(props["aria-label"]) ? props["aria-label"] : "Close"
+  }
+</script>
+
+<button
+  type="button"
+  class="{{classes}}"
+  data-bs-dismiss="{{dismiss}}"
+  aria-label="{{ariaLabel}}"
+/>

@@ -1,0 +1,63 @@
+<script props>
+  const {
+    variant,
+    split,
+    size,
+    nowrap,
+    active,
+    disabled,
+    autoclose,
+    static,
+    offset,
+    reference
+  } = props
+  const noToggler = isEnabled(props["no-toggler"])
+
+  const btnClasses = clsx(
+    "btn",
+    isString(variant) && `btn-${variant}`,
+    isString(size) && `btn-${size}`,
+    isEnabled(nowrap) && !isEnabled(split) && "text-nowrap",
+    isEnabled(active) && "active"
+  )
+
+  module.exports = {
+    isSplit: isEnabled(split),
+    btnClasses,
+    classes: clsx(
+      btnClasses,
+      !noToggler && "dropdown-toggle",
+      isEnabled(split) && "dropdown-toggle-split"
+    ),
+    isDisabled: isEnabled(disabled) ? true : null,
+    isActive: isEnabled(active) ? true : null,
+    autoclose: !isNil(autoclose) ? autoclose || true : null,
+    display: isEnabled(static) ? "static" : null,
+    offset,
+    reference,
+    clsx
+  }
+</script>
+
+<if condition="isSplit">
+  <button type="button" class="{{clsx(btnClasses, isSplit && 'text-nowrap')}}">
+    <children />
+  </button>
+</if>
+<button
+  type="button"
+  class="{{classes}}"
+  data-bs-toggle="dropdown"
+  data-bs-autoclose="{{autoclose}}"
+  data-bs-display="{{display}}"
+  data-bs-offset="{{offset}}"
+  data-bs-reference="{{reference}}"
+  disabled="{{isDisabled}}"
+  aria-pressed="{{isActive}}"
+  aria-expanded="false"
+>
+  <if condition="isSplit">
+    <span class="visually-hidden">Toggle Dropdown</span>
+  </if>
+  <else><children /></else>
+</button>

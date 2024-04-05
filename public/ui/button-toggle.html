@@ -1,0 +1,18 @@
+<script props>
+  const { id, name, variant = "secondary", class: classname } = props
+
+  module.exports = {
+    id,
+    name,
+    btnClasses: clsx("btn", `btn-${variant}`, classname)
+  }
+</script>
+
+<input
+  type="checkbox"
+  class="btn-check"
+  name="{{name}}"
+  id="{{id}}"
+  autocomplete="off"
+/>
+<label class="{{btnClasses}}" for="{{id}}"><children /></label>

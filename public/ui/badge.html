@@ -1,0 +1,36 @@
+<script props>
+  const {
+    as: component = "span",
+    variant = "primary",
+    bordered,
+    subtle,
+    pill,
+    circle,
+    floated
+  } = props
+  const floatedBottom = props['floated-bottom']
+
+  module.exports = {
+    component,
+    classes: clsx(
+      "badge",
+      isEnabled(bordered) && 'badge-bordered',
+      !isEnabled(subtle) && `text-bg-${variant}`,
+      isEnabled(subtle) && `bg-${variant}-subtle text-${variant}`,
+      isEnabled(pill) && "rounded-pill",
+      isEnabled(circle) && "rounded-circle",
+      isEnabled(floated) &&
+        "position-absolute top-0 end-0",
+      isEnabled(floatedBottom) &&
+        "position-absolute top-auto end-0 bottom-0"
+    ),
+    visualHiddenText: props['visual-hidden-text']
+  }
+</script>
+
+<{{component}} class="{{classes}}">
+  <children />
+  <if condition="visualHiddenText">
+    <ui:visual-hidden as="span">{{visualHiddenText}}</ui:visual-hidden>
+  </if>
+</span>

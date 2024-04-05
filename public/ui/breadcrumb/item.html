@@ -1,0 +1,24 @@
+<script props>
+  const { href = "#", active, text } = props
+  const isActive = isEnabled(active)
+
+  module.exports = {
+    href,
+    text,
+    classes: clsx("breadcrumb-item", isActive && "active"),
+    isActive
+  }
+</script>
+
+<li class="{{classes}}">
+  <if condition="isActive">
+    <if condition="text">{{text}}</if>
+    <else><children /></else>
+  </if>
+  <else>
+    <a href="{{href}}">
+      <if condition="text">{{text}}</if>
+      <else><children /></else>
+    </a>
+  </else>
+</li>

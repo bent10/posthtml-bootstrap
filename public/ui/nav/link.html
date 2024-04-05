@@ -1,0 +1,58 @@
+<script props>
+  const {
+    as: component = "a",
+    href,
+    id,
+    active,
+    disabled,
+    toggle,
+    target,
+    selected
+  } = props
+  const controls = isString(target) ? target.slice(1) : null
+
+  module.exports = {
+    component,
+    href,
+    id: !isNull(controls) ? id || `${controls}-tab` : null,
+    classes: clsx("nav-link", isEnabled(active) && "active"),
+    isDisabled: isEnabled(disabled),
+    toggle: isEnabled(toggle) ? "tab" : null,
+    target: isString(target) ? target : null,
+    controls,
+    current: isEnabled(active) ? "page" : null,
+    selected: isString(selected) ? true : null,
+    clsx
+  }
+</script>
+
+<if condition="component === 'button' || toggle === 'tab'">
+  <button
+    type="button"
+    id="{{id}}"
+    class="{{classes}}"
+    data-bs-toggle="{{toggle}}"
+    data-bs-target="{{target}}"
+    role="{{toggle}}"
+    aria-controls="{{controls}}"
+    aria-selected="{{selected}}"
+  >
+    <children />
+  </button>
+</if>
+<else>
+  <{{component}}
+    href="{{href}}"
+    id="{{id}}"
+    class="{{clsx(classes, isDisabled && 'disabled')}}"
+    data-bs-toggle="{{toggle}}"
+    data-bs-target="{{target}}"
+    role="{{toggle}}"
+    aria-controls="{{controls}}"
+    aria-current="{{current}}"
+    aria-selected="{{selected}}"
+    aria-disabled="{{isDisabled ? true : null}}"
+  >
+    <children />
+  </a>
+</else>
