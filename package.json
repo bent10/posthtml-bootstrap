@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@types/lodash-es": "4.17.12",
-    "doogu": "3.2.12",
+    "doogu": "3.2.13",
     "lodash-es": "4.17.21"
   },
   "peerDependencies": {
