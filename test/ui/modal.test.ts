@@ -135,7 +135,7 @@ describe('modal', () => {
     const html = await render('<ui:modal centered />')
     expect(html).toMatchInlineSnapshot(`
       "<div class="modal fade">
-      <div class="modal-dialog modal-centered" role="document">
+      <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content"></div>
       </div>
       </div>"
@@ -146,7 +146,7 @@ describe('modal', () => {
     const html = await render('<ui:modal scrollable />')
     expect(html).toMatchInlineSnapshot(`
       "<div class="modal fade">
-      <div class="modal-dialog modal-scrollable" role="document">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
       <div class="modal-content"></div>
       </div>
       </div>"

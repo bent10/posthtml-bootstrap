@@ -10,8 +10,8 @@
         (isTruthy(fullscreen)
           ? "modal-fullscreen"
           : `modal-fullscreen-${fullscreen}-down`),
-      isString(centered) && "modal-centered",
-      isString(scrollable) && "modal-scrollable"
+      isString(centered) && "modal-dialog-centered",
+      isString(scrollable) && "modal-dialog-scrollable"
     ),
     backdrop,
     keyboard: isEnabled(props["no-keyboard"]) ? false : null
