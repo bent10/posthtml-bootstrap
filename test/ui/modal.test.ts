@@ -124,7 +124,7 @@ describe('modal', () => {
     const html = await render("<ui:modal fullscreen='xl' />")
     expect(html).toMatchInlineSnapshot(`
       "<div class="modal fade">
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog modal-fullscreen-xl-down" role="document">
       <div class="modal-content"></div>
       </div>
       </div>"
