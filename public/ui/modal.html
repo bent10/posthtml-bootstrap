@@ -6,10 +6,11 @@
     dialogClasses: clsx(
       "modal-dialog",
       isString(size) && `modal-${size}`,
-      isBooleanLike(fullscreen) &&
-        (isTruthy(fullscreen)
+      isTruthy(fullscreen)
+        ? typeof fullscreen === "boolean"
           ? "modal-fullscreen"
-          : `modal-fullscreen-${fullscreen}-down`),
+          : `modal-fullscreen-${fullscreen}-down`
+        : "",
       isString(centered) && "modal-dialog-centered",
       isString(scrollable) && "modal-dialog-scrollable"
     ),

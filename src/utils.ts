@@ -71,22 +71,18 @@ export function isBooleanLike(input: unknown) {
  * Checks if the input is truthy.
  *
  * @param input - The value to check for truthiness.
- * @returns
- *   `true` if the input is strictly equal to `true` or the string 'true', otherwise
- *   `false`.
+ * @returns `true` if the value is truthy, otherwise `false`.
  */
 export function isTruthy(input: unknown) {
-  return input === true || input === 'true'
+  return !!input
 }
 
 /**
  * Checks if the input is falsy.
  *
  * @param input - The value to check for falsiness.
- * @returns
- *   `true` if the input is strictly equal to `false` or the string 'false', otherwise
- *   `false`.
+ * @returns `true` if the value is falsy, otherwise `false`.
  */
 export function isFalsy(input: unknown) {
-  return input === false || input === 'false'
+  return !input
 }
