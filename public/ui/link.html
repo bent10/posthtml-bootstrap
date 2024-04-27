@@ -2,21 +2,22 @@
   const { href, label, disabled } = props
 
   module.exports = {
-    classes: isEnabled(disabled) ? "disabled" : "",
     isLabel: isString(label),
+    isDisabled: isEnabled(disabled),
     label,
-    href,
-    disabled,
-    isDisabled: isEnabled(disabled)
+    href
   }
 </script>
 
-<a
-  href="{{href}}"
-  class="{{classes}}"
-  tabindex="{{isDisabled ? '-1' : null}}"
-  aria-disabled="{{isDisabled ? true : null}}"
->
-  <if condition="isLabel">{{label}}</if>
-  <else><children /></else>
-</a>
+<if condition="isDisabled">
+  <a href="{{href}}" class="disabled" tabindex="-1" aria-disabled="true">
+    <if condition="isLabel">{{label}}</if>
+    <else><children /></else>
+  </a>
+</if>
+<else>
+  <a href="{{href}}">
+    <if condition="isLabel">{{label}}</if>
+    <else><children /></else>
+  </a>
+</else>

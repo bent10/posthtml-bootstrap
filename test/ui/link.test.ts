@@ -6,7 +6,7 @@ describe('link', () => {
   it('renders the link component with default props', async () => {
     const html = await render('<ui:link />')
     expect(html).toMatchInlineSnapshot(`
-      "<a class="">
+      "<a>
       </a>"
     `)
   })
@@ -14,7 +14,7 @@ describe('link', () => {
   it('renders the link component with label prop', async () => {
     const html = await render("<ui:link href='/example' label='foo' />")
     expect(html).toMatchInlineSnapshot(`
-      "<a href="/example" class="">
+      "<a href="/example">
       foo</a>"
     `)
   })
@@ -22,7 +22,7 @@ describe('link', () => {
   it('applies custom class to the link component', async () => {
     const html = await render("<ui:link class='foo' />")
     expect(html).toMatchInlineSnapshot(`
-      "<a class=" foo">
+      "<a class="foo">
       </a>"
     `)
   })
@@ -30,7 +30,7 @@ describe('link', () => {
   it('renders the link component with provided URL', async () => {
     const html = await render("<ui:link href='/foo' />")
     expect(html).toMatchInlineSnapshot(`
-      "<a href="/foo" class="">
+      "<a href="/foo">
       </a>"
     `)
   })

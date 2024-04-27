@@ -51,7 +51,7 @@ describe('form.select', () => {
   it('should render disabled when disabled prop is true', async () => {
     const html = await render('<ui:form.select disabled />')
     expect(html).toMatchInlineSnapshot(`
-      "<select class="form-select" disabled="">
+      "<select class="form-select" disabled>
 
       </select>"
     `)

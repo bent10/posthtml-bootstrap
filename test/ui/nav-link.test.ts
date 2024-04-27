@@ -64,7 +64,7 @@ describe('nav.link', () => {
 
 
 
-      <button type="button" class="nav-link" disabled="">
+      <button type="button" class="nav-link" disabled>
 
       </button>"
     `)

@@ -81,7 +81,7 @@ describe('button', () => {
     const html = await render('<ui:button disabled>Button</ui:button>')
     expect(html).toMatchInlineSnapshot(
       `
-      "<button type="button" class="btn" disabled="">
+      "<button type="button" class="btn" disabled>
       Button
       </button>"
     `

@@ -3,7 +3,7 @@ import posthtmlComponent from 'posthtml-component'
 import {
   defineBootstrapUIConfig,
   PostHTMLComponentOptions
-} from '../dist/index.js'
+} from '../src/index.js'
 
 export async function render(
   tmpl: string,

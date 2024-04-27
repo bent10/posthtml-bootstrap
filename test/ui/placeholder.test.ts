@@ -55,7 +55,7 @@ describe('placeholder', () => {
       "<ui:placeholder size='sm' width='50' is-button />"
     )
     expect(html).toMatchInlineSnapshot(`
-      "<button type="button" class="btn btn-sm placeholder w-50" disabled="">
+      "<button type="button" class="btn btn-sm placeholder w-50" disabled>
 
       </button>"
     `)
@@ -64,7 +64,7 @@ describe('placeholder', () => {
   it('renders placeholder as button with variant', async () => {
     const html = await render("<ui:placeholder variant='primary' is-button />")
     expect(html).toMatchInlineSnapshot(`
-      "<button type="button" class="btn btn-primary placeholder" disabled="">
+      "<button type="button" class="btn btn-primary placeholder" disabled>
 
       </button>"
     `)
@@ -73,7 +73,7 @@ describe('placeholder', () => {
   it('renders placeholder as button with size', async () => {
     const html = await render("<ui:placeholder size='lg' is-button />")
     expect(html).toMatchInlineSnapshot(`
-      "<button type="button" class="btn btn-lg placeholder" disabled="">
+      "<button type="button" class="btn btn-lg placeholder" disabled>
 
       </button>"
     `)
@@ -82,7 +82,7 @@ describe('placeholder', () => {
   it('renders placeholder as button with specified cols', async () => {
     const html = await render("<ui:placeholder width='sm-6 xl-3' is-button />")
     expect(html).toMatchInlineSnapshot(`
-      "<button type="button" class="btn placeholder col-sm-6 col-xl-3" disabled="">
+      "<button type="button" class="btn placeholder col-sm-6 col-xl-3" disabled>
 
       </button>"
     `)

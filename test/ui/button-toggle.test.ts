@@ -16,7 +16,7 @@ describe('button-toggle', () => {
       "<ui:button-toggle id='foo' checked>Toggle</ui:button-toggle>"
     )
     expect(html).toMatchInlineSnapshot(`
-      "<input type="checkbox" class="btn-check" id="foo" autocomplete="off" checked="">
+      "<input type="checkbox" class="btn-check" id="foo" autocomplete="off" checked>
       <label class="btn btn-secondary" for="foo">Toggle</label>"
     `)
   })

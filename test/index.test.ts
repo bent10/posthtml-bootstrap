@@ -1,6 +1,6 @@
 /// <reference types="vitest/globals" />
 
-import { defineBootstrapUIConfig } from '../dist/index.js'
+import { defineBootstrapUIConfig } from '../src/index.js'
 
 it('should returns the default configuration', () => {
   const config = defineBootstrapUIConfig()

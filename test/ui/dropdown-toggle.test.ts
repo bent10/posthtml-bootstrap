@@ -156,7 +156,7 @@ describe('dropdown.toggle', () => {
       '<ui:dropdown.toggle disabled>Toggle</ui:dropdown.toggle>'
     )
     expect(html).toMatchInlineSnapshot(`
-      "<button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" disabled="" aria-expanded="false">
+      "<button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" disabled aria-expanded="false">
       Toggle</button>"
     `)
   })
@@ -166,7 +166,7 @@ describe('dropdown.toggle', () => {
       '<ui:dropdown.toggle disabled split>Toggle</ui:dropdown.toggle>'
     )
     expect(html).toMatchInlineSnapshot(`
-      "<button type="button" class="btn text-nowrap" disabled="">
+      "<button type="button" class="btn text-nowrap" disabled>
       Toggle
       </button>
       <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" disabled="true" aria-expanded="false">

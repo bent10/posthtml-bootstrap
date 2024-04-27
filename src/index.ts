@@ -1,3 +1,5 @@
+/// <reference types="vite/client" />
+
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import type { PostHTMLComponentOptions } from './types.js'
@@ -19,7 +21,9 @@ export function defineBootstrapUIConfig(
   const { folders = [], utilities, expressions, ...restOpts } = options
   const __dirname = dirname(fileURLToPath(import.meta.url))
 
-  folders.push(resolve(__dirname, './ui'))
+  folders.push(
+    resolve(__dirname, import.meta.env.PROD ? './ui' : '../public/ui')
+  )
 
   return {
     // users configs
