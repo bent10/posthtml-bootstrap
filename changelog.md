@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/bent10/posthtml-bootstrap/compare/v1.0.2...v1.0.3) (2024-04-27)
+
+
+### Bug Fixes
+
+* **deps:** update dependency clsx to v2.1.1 ([9b3c01a](https://github.com/bent10/posthtml-bootstrap/commit/9b3c01a1e1c04d70031be592b5149b73759eab15))
+
 ## [1.0.2](https://github.com/bent10/posthtml-bootstrap/compare/v1.0.1...v1.0.2) (2024-04-25)
 
 
