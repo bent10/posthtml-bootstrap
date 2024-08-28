@@ -1,3 +1,11 @@
+## [1.0.4](https://github.com/bent10/posthtml-bootstrap/compare/v1.0.3...v1.0.4) (2024-08-28)
+
+
+### Bug Fixes
+
+* **deps:** ncu ([7e32b13](https://github.com/bent10/posthtml-bootstrap/commit/7e32b130eb37102b687fc663a092db026fa7a3f7))
+* remove empty block ([60c8627](https://github.com/bent10/posthtml-bootstrap/commit/60c86274ea69a070f98787bac3b93a20203dc5cc))
+
 ## [1.0.3](https://github.com/bent10/posthtml-bootstrap/compare/v1.0.2...v1.0.3) (2024-04-27)
 
 
