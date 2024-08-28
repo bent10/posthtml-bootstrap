@@ -30,9 +30,6 @@ export function normalizeBreakpointProp(
     return isTruthy(prop) ? prefix : ''
   }
 
-  if (prop === 'true') {
-  }
-
   prop =
     typeof prop === 'string' || typeof prop === 'number'
       ? String(prop).split(' ')
